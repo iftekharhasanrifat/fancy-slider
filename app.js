@@ -24,6 +24,8 @@ const showImages = (images) => {
     gallery.innerHTML = '';
     // show gallery title
     galleryHeader.style.display = 'flex';
+
+
     const searchText = document.getElementById('search').value;
     if (searchText === "") {
         alert("Please enter an image name");
@@ -33,12 +35,19 @@ const showImages = (images) => {
         if (images.length > 0) {
             document.getElementById('error-message').innerText = '';
             images.forEach(image => {
+                let imageUrl;
+                if (image.userImageURL == "") {
+                    imageUrl = "images/user.png";
+                } else {
+                    imageUrl = image.userImageURL;
+                }
+                console.log(imageUrl);
                 let div = document.createElement('div');
                 div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
                 div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
                 <div class="d-flex align-items-center justify-content-around">
                     <div class="mt-2"><p style="font-size:15px;font-weight: 700; margin-bottom:none;">User: </p></div>
-                    <div><span style="font-size:15px;" class="mr-2">${image.user}</span><img src="${image.userImageURL}" style="border-radius: 50%;height: 30px; width: 30px;" alt="User Image"></div>
+                    <div><span style="font-size:15px;" class="mr-2">${image.user}</span><img src="${imageUrl}" style="border-radius: 50%;height: 30px; width: 30px;" alt="User Image"></div>
                 </div>
                 `;
                 gallery.appendChild(div);
