@@ -75,11 +75,7 @@ const selectItem = (event, img) => {
     if (item === -1) {
         sliders.push(img);
     } else {
-        for (let i = 0; i < sliders.length; i++) {
-            if (sliders[i] == img) {
-                sliders.splice(i, 1);
-            }
-        }
+        sliders.splice(item, 1);
     }
 }
 var timer
