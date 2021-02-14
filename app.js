@@ -37,7 +37,7 @@ const showImages = (images) => {
                 div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
                 div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
                 <div class="d-flex align-items-center justify-content-around">
-                    <div class="mt-2"><p style="font-size:15px;font-weight: 700;">User: </p></div>
+                    <div class="mt-2"><p style="font-size:15px;font-weight: 700; margin-bottom:none;">User: </p></div>
                     <div><span style="font-size:15px;" class="mr-2">${image.user}</span><img src="${image.userImageURL}" style="border-radius: 50%;height: 30px; width: 30px;" alt="User Image"></div>
                 </div>
                 `;
