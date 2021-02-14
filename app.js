@@ -28,8 +28,7 @@ const showImages = (images) => {
 
     const searchText = document.getElementById('search').value;
     if (searchText === "") {
-        alert("Please enter an image name");
-        toggleSpinner();
+        displayError("Please enter an image name");
         imagesArea.style.display = 'none';
     } else {
         if (images.length > 0) {
@@ -41,7 +40,6 @@ const showImages = (images) => {
                 } else {
                     imageUrl = image.userImageURL;
                 }
-                console.log(imageUrl);
                 let div = document.createElement('div');
                 div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
                 div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
@@ -62,7 +60,6 @@ const showImages = (images) => {
 
 const getImages = (query) => {
     toggleSpinner();
-    console.log(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`);
     fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
         .then(response => response.json())
         .then(data => showImages(data.hits))
